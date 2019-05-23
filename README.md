@@ -1,4 +1,4 @@
-- I. Table of Contents
+# Table of Contents
 - II. Motivation
   - I. Data Sources
   - II. Classification problem
@@ -110,20 +110,6 @@ A separate .csv file contains mapping codes to their description. The file conta
 - discharge type codes
 - admission source codes
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
