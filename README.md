@@ -1,31 +1,31 @@
-I. Table of Contents
-II. Motivation
-I. Data Sources
-II. Classification problem
-III. Mapping Admission, Discharge & Admission Source Types
-III. EDA & Feature engineering
-I. Target Variable: Setting Early (within 30 days) readmission to '1'
-II. Webscraping ICD-9 Codes & their descriptions
-III. Grouping drugs by drug class
-IV. Medical specialties: Retaining 10 medical specialties
-V. Correlation Heatmap
-VI. Combining 3 diagnosis codes into separate indicator dummy variables
-VII. Exploring distribution of numerical variables
-IV. Part 2: Dimensionality reduction with PCA limited to 6 components
-V. Part 3: Preparing data for modeling
-I. Dummy Variables Encoding for Categorical Data
-VI. Class Imbalance: Target variable
-I. Undersampling y & Setting Training/Test sets for X and y
-VII. Part 4: Modeling and Tuning models
-I. Baseline Model: Logistic Regression
-I. Tuning Logistic Regression
-II. KNN: K-Nearest Neighbors
-III. Random Forest Classifier
-IV. Boosted Trees with XG Boost
-V. SGD - Stochastic gradient descent
-VIII. Results and Model comparison
-I. Metric choice: Recall
-IX. Conclusion & Next Steps
+- I. Table of Contents
+- II. Motivation
+  - I. Data Sources
+  - II. Classification problem
+- III. Mapping Admission, Discharge & Admission Source Types
+- III. EDA & Feature engineering
+  - I. Target Variable: Setting Early (within 30 days) readmission to '1'
+  - II. Webscraping ICD-9 Codes & their descriptions
+  - III. Grouping drugs by drug class
+  - IV. Medical specialties: Retaining 10 medical specialties
+  - V. Correlation Heatmap
+  - VI. Combining 3 diagnosis codes into separate indicator dummy variables
+  - VII. Exploring distribution of numerical variables
+- IV. Part 2: Dimensionality reduction with PCA limited to 6 components
+- V. Part 3: Preparing data for modeling
+  - I. Dummy Variables Encoding for Categorical Data
+- VI. Class Imbalance: Target variable
+  - I. Undersampling y & Setting Training/Test sets for X and y
+- VII. Part 4: Modeling and Tuning models
+  - I. Baseline Model: Logistic Regression
+    - Tuning Logistic Regression
+  - II. KNN: K-Nearest Neighbors
+  - III. Random Forest Classifier
+  - IV. Boosted Trees with XG Boost
+  - V. SGD - Stochastic gradient descent
+- VIII. Results and Model comparison
+  - I. Metric choice: Recall
+- IX. Conclusion & Next Steps
 
 # Motivation
 
