@@ -154,13 +154,13 @@ A separate .csv file contains mapping codes to their description. The file conta
 
 ## Target Variable: Setting Early (within 30 days) readmission to '1'
 
->We are attempting to predict patient early readmissions (within 30 days), therefore we combine readmissions over 30 days in the same group as non readmitted patients. In this case, we have a binary classification problem and logistic regression can be used as a base model.
+- We are attempting to predict patient early readmissions (within 30 days), therefore we combine readmissions over 30 days in the same group as non readmitted patients. In this case, we have a binary classification problem and logistic regression can be used as a base model.
 
 ##  Webscraping ICD-9 Codes & their descriptions
 
-> In health care, diagnosis codes are used as a tool to group and identify diseases, disorders, symptoms, poisonings, adverse effects of drugs and chemicals, injuries and other reasons for patient encounters. Diagnostic coding is the translation of written descriptions of diseases, illnesses and injuries into codes from a particular classification. In medical classification, diagnosis codes are used as part of the clinical coding process alongside intervention codes. International Statistical Classification of Diseases and Related Health Problems (ICD) is one of the most widely used classification systems for diagnosis coding as it allows comparability and use of mortality and morbidity data.
+-  In health care, diagnosis codes are used as a tool to group and identify diseases, disorders, symptoms, poisonings, adverse effects of drugs and chemicals, injuries and other reasons for patient encounters. Diagnostic coding is the translation of written descriptions of diseases, illnesses and injuries into codes from a particular classification. In medical classification, diagnosis codes are used as part of the clinical coding process alongside intervention codes. International Statistical Classification of Diseases and Related Health Problems (ICD) is one of the most widely used classification systems for diagnosis coding as it allows comparability and use of mortality and morbidity data.
 
->ICD codes in this dataset refer to ICD-9 codes.
+- ICD codes in this dataset refer to ICD-9 codes, which were in place in 2008.
 
 
 ## Grouping drugs by drug class
@@ -184,11 +184,11 @@ We have also classified our patients as either "on" or "off" each medication, by
 
 ## Medical specialties: Retaining 10 medical specialties
 
-> To reduce dimensionality of medical specialties, we have grouped all the medical specialties who had less than 500 patients into one category called "Other".
+- To reduce dimensionality of medical specialties, we have grouped all the medical specialties who had less than 500 patients into one category called "Other".
 
 ## Correlation Heatmap
 
-> There is a -0.75 correlation between admission source id and admission type id. There is no correlation over |0.8| between numerical variables, therefore they will all be included in the initial model as regressors.
+- There is a -0.75 correlation between admission source id and admission type id. There is no correlation over |0.8| between numerical variables, therefore they will all be included in the initial model as regressors.
 
 ![png](plots_md/readmissions_clean-formd_31_1.png)
 
@@ -249,15 +249,15 @@ df1.drop(X_scale, axis = 1, inplace=True)
 # Part 3: Preparing data for modeling
 ## Dummy Variables Encoding for Categorical Data
 
->  Label encoding for categorical data : 'age','race', 'weight', 'admission_type_id',
+- Label encoding for categorical data : 'age','race', 'weight', 'admission_type_id',
        'discharge_disposition_id', 'admission_source_id',
        'medical_specialty', 'max_glu_serum', 'A1Cresult'
 
 # Class Imbalance: Target variable
 ## Undersampling y & Setting Training/Test sets for X and y
 
-> The target variable identifying whether a patient was readmitted early (within 30 days) is imbalanced, 11% of patients were readmitted within 30 days.
-To combat imbalanced data, we opted to **downsample** the 'No' category using RandomUnderSampler. This will allow us to achieve a balance ratio closer to 1:1 and improve our binary classification predictions. Furthermore, we have opted to train on 80% of the data and test on the remainder.
+ -The target variable identifying whether a patient was readmitted early (within 30 days) is imbalanced, 11% of patients were readmitted within 30 days.
+- To combat imbalanced data, we opted to **downsample** the 'No' category using RandomUnderSampler. This will allow us to achieve a balance ratio closer to 1:1 and improve our binary classification predictions. Furthermore, we have opted to train on 80% of the data and test on the remainder.
 
 
 ```python
@@ -294,7 +294,7 @@ Target after resampling :
 
 Tuning logistic regression predictions with parameter grid:
 
-> Results are similar to base model, best parameters are mostly the default values. Best parameters C = 1, penalty score based on L1 - Lasso. (default is L2), number of iterations = 100. **Lasso** shrinks some coefficients close to 0 or to 0 by penalizing the cost function.
+- Results are similar to base model, best parameters are mostly the default values. Best parameters C = 1, penalty score based on L1 - Lasso. (default is L2), number of iterations = 100. **Lasso** shrinks some coefficients close to 0 or to 0 by penalizing the cost function.
 
 
 ```python
@@ -318,7 +318,7 @@ dt_grid_search.best_params_
 
 ## KNN:  K-Nearest Neighbors
 
-> Using GridSearch and comparing K = 5 and K = 100, our KNN model is optimized using K = 100. Results are poor and computationally expensive to optimize. KNN is not ideal for the size of our data.
+- Using GridSearch and comparing K = 5 and K = 100, our KNN model is optimized using K = 100. Results are poor and computationally expensive to optimize. KNN is not ideal for the size of our data.
 
     accuracy train score: 0.610874330248417
     accuracy test score: 0.596687773989284
@@ -337,20 +337,20 @@ dt_grid_search.best_params_
 
 ## Random Forest Classifier
 
-> After GridSearch, parameters used are:
+- After GridSearch, parameters used are:
 - criterion = 'entropy'
 - max_depth = 10
 - n_estimators = 100
 - min_sample_split = 2 (Default)
 
-> Beside the 6 principal components, the most important features with Random Forest include:
-- Number of inpatient visits of the patient in the year preceding the encounter
-- Discharge disposition code # 22 : Discharged/transferred to another rehab fac including rehab units of a hospital
-- Number of emergency visits of the patient within the year preceding the encounter
-- Number of lab tests performed during the encounter
-- Time in hospital (measured in days)
-- Number of procedures (Number of procedures (other than lab tests) performed during the encounter)
-- Discharge disposition code # 3 : Discharged/transferred to SNF (skilled nursing facility)
+- Beside the 6 principal components, the most important features with Random Forest include:
+  - Number of inpatient visits of the patient in the year preceding the encounter
+  - Discharge disposition code # 22 : Discharged/transferred to another rehab fac including rehab units of a hospital
+-  Number of emergency visits of the patient within the year preceding the encounter
+  - Number of lab tests performed during the encounter
+  - Time in hospital (measured in days)
+  - Number of procedures (Number of procedures (other than lab tests) performed during the encounter)
+  - Discharge disposition code # 3 : Discharged/transferred to SNF (skilled nursing facility)
 
 
 ```python
