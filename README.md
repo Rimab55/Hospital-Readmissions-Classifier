@@ -204,7 +204,7 @@ We have also classified our patients as either "on" or "off" each medication, by
 
 > There is a -0.75 correlation between admission source id and admission type id. There is no correlation over |0.8| between numerical variables, therefore they will all be included in the initial model as regressors.
 
-![png](readmissions_clean-formd_files/readmissions_clean-formd_31_1.png)
+![png](plots_md/readmissions_clean-formd_31_1.png)
 
 
 ## Combining 3 diagnosis codes into separate indicator dummy variables
@@ -213,7 +213,7 @@ We have also classified our patients as either "on" or "off" each medication, by
 
 ## Exploring distribution of numerical variables
 
-![png](readmissions_clean-formd_files/readmissions_clean-formd_35_1.png)
+![png](plots_md/readmissions_clean-formd_35_1.png)
 
 # Part 2: Dimensionality reduction with PCA limited to 6 components
 
@@ -301,7 +301,7 @@ Target after resampling :
 
 
 
-![png](readmissions_clean-formd_files/readmissions_clean-formd_48_1.png)
+![png](plots_md/readmissions_clean-formd_48_1.png)
 
 
 ### Tuning Logistic Regression
@@ -346,7 +346,7 @@ dt_grid_search.best_params_
 
 
 
-![png](readmissions_clean-formd_files/readmissions_clean-formd_56_1.png)
+![png](plots_md/readmissions_clean-formd_56_1.png)
 
 
 ## Random Forest Classifier
@@ -371,9 +371,6 @@ dt_grid_search.best_params_
 grid_rf.best_params_
 ```
 
-
-
-
     {'criterion': 'gini', 'max_depth': 10, 'n_estimators': 115}
 
 
@@ -386,7 +383,7 @@ grid_rf.best_params_
 
 
 
-![png](readmissions_clean-formd_files/readmissions_clean-formd_60_0.png)
+![png](plots_md/readmissions_clean-formd_60_0.png)
 
 
 
@@ -399,7 +396,7 @@ create_roc_auc(best_rf, 'Random Forest Classifier')
 
 
 
-![png](readmissions_clean-formd_files/readmissions_clean-formd_61_1.png)
+![png](plots_md/readmissions_clean-formd_61_1.png)
 
 
 ## Boosted Trees with XG Boost
@@ -429,7 +426,7 @@ xg_grid.best_params_
 
 
 
-![png](readmissions_clean-formd_files/readmissions_clean-formd_65_1.png)
+![png](plots_md/readmissions_clean-formd_65_1.png)
 
 
 ## SGD - Stochastic gradient descent
@@ -462,7 +459,7 @@ sgd.fit(X_train, y_train)
 
 
 
-![png](readmissions_clean-formd_files/readmissions_clean-formd_70_1.png)
+![png](plots_md/readmissions_clean-formd_70_1.png)
 
 
 # Results and Model comparison
@@ -471,16 +468,16 @@ sgd.fit(X_train, y_train)
 - XGBoost has an overall better area under the curve for our testing data.
 
 
-![png](readmissions_clean-formd_files/readmissions_clean-formd_73_1.png)
+![png](plots_md/readmissions_clean-formd_73_1.png)
 
 
-![png](readmissions_clean-formd_files/readmissions_clean-formd_74_1.png)
+![png](plots_md/readmissions_clean-formd_74_1.png)
 
 
 ## Metric choice: Recall
 We chose recall (or sensitivity) as the most important metric for our classification problem. We want to identify as many patients who are at risk of being readmitted within 30 days, even if it puts us at risk of misidentify patients who won't be readmitted in reality. We want the model to be sensitive and capture as many patients as possible who are at risk of being readmitted within 30 days. That being said, we are fully aware that our optimized models can  return many "false positives", meaning that they are more likely to have a higher Type 1 Error.
 
-![png](readmissions_clean-formd_files/readmissions_clean-formd_76_1.png)
+![png](plots_md/readmissions_clean-formd_76_1.png)
 
 
 # Conclusion & Next Steps
@@ -501,3 +498,5 @@ Patients who were on medications that fell into the ‘biguanides’ group showe
 The most important indicator of readmission is the number of previous inpatient admissions, which could speak to the idea that an individual’s lifestyle choices and not simply their ailments must be addressed before and after release.
 Releasing a patient for continued treatment and rehabilitation might seem proactive and safe, however our data shows that discharge to these facilities prove to have no positive impact on overall health improvement.
 A final thought was that the number of lab procedures proved to be more predictive than the number of diagnoses when identifying a patient who was going to be readmitted. This could be because lab procedures indicate a complicated diagnoses, but it also highlights the inefficient and expensive approach healthcare facilities take when treating patients.
+
+# Code and details is available in readmissions_clean.ipynb notebook
