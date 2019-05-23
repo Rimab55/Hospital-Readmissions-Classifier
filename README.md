@@ -499,4 +499,4 @@ The most important indicator of readmission is the number of previous inpatient 
 Releasing a patient for continued treatment and rehabilitation might seem proactive and safe, however our data shows that discharge to these facilities prove to have no positive impact on overall health improvement.
 A final thought was that the number of lab procedures proved to be more predictive than the number of diagnoses when identifying a patient who was going to be readmitted. This could be because lab procedures indicate a complicated diagnoses, but it also highlights the inefficient and expensive approach healthcare facilities take when treating patients.
 
-### Code and details is available in readmissions_clean.ipynb notebook
+### Code and details are available in readmissions_clean.ipynb notebook
