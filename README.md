@@ -477,7 +477,7 @@ Patients who were on medications that fell into the ‘biguanides’ group showe
 
 **Model improvements:**
 - Feature Engineering
-- Other models such as Support Vector Machine
+- Other models such as Support Vector Machines
 - Multiclass with three possible classes (<30, >30, No)
 
 **Recommendations:**
